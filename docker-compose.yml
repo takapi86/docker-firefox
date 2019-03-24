@@ -1,0 +1,18 @@
+version: '3'
+services:
+  firefox:
+    build: .
+    volumes:
+      - /tmp/.X11-unix/:/tmp/.X11-unix/
+      - $HOME/.mozilla/:/home/user/.mozilla/
+      - $HOME/ダウンロード/:/home/user/ダウンロード/
+      - $HOME/.cache/:/home/user/.cache/
+      - /etc/localtime:/etc/localtime
+      - /run/user/1000/pulse/native:/run/user/1000/pulse/native
+      - $HOME/.config/pulse/cookie:/home/user/.config/pulse/cookie
+    environment:
+      - DISPLAY=$DISPLAY
+      - LANG=ja_JP.utf8
+      - LC_ALL=ja_JP.utf8
+      - PULSE_SERVER=/run/user/1000/pulse/native
+      - PULSE_COOKIE=/home/user/.config/pulse/cookie
